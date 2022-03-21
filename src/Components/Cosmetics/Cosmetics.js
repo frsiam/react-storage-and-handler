@@ -11,7 +11,6 @@ const Cosmetics = () => {
     },[])
     return (
         <div>
-            <h1>hello</h1>
             {
                 cosmetics.map(cosmetic => <Cosmetic name={cosmetic.name} price={cosmetic.price} key={cosmetic._id} id={cosmetic._id}></Cosmetic>)
             }
