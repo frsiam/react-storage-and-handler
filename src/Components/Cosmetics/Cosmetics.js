@@ -1,15 +1,20 @@
-import React from 'react';
-import { add } from '../../Utilities/calculate';
-// import add from '../../Utilities/calculate';
+import React, { useEffect, useState } from 'react';
+import Cosmetic from '../Cosmetic/Cosmetic';
 
 const Cosmetics = () => {
-    const first = 55;
-    const second = 34;
-    const total = add(first,second)
+    const [cosmetics,setCosmetics] =useState([]);
+
+    useEffect(() => {
+        fetch('data.json')
+        .then(res => res.json())
+        .then(data => setCosmetics(data))
+    },[])
     return (
         <div>
             <h1>hello</h1>
-            <h4>Our total: {total}</h4>
+            {
+                cosmetics.map(cosmetic => <Cosmetic name={cosmetic.name} price={cosmetic.price} key={cosmetic._id} id={cosmetic._id}></Cosmetic>)
+            }
         </div>
     );
 };
